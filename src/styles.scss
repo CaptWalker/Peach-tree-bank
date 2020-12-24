@@ -3,3 +3,11 @@
 /* Importing Bootstrap SCSS file. */
 @import '../src/app/styles/variables';
 @import '~bootstrap/scss/bootstrap';
+
+.w-30{
+    width: 30%;
+}
+
+.w-70{
+    width: 70%;
+}

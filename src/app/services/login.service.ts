@@ -45,6 +45,12 @@ export class LoginService {
   }
 
   get isUserLoggedIn(){
+    if(this.localStorageService.getToken()){
+      this.loggedIn.next(true);
+    }
+    else{
+      this.loggedIn.next(false);
+    }
     return this.loggedIn.asObservable();
   }
 
