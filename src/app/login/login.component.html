@@ -1,0 +1,31 @@
+<div class="d-flex justify-content-center">
+    <div class="card w-30  mt-5 border border-info">
+        <div class="card-block">
+            <form [formGroup]="loginForm">
+                <h4 class="card-title text-primary d-flex justify-content-center pt-3 \">Login</h4>
+                <div class="form-group pt-5 pb-2 pl-5 pr-5">
+                    <label for="exampleInputEmail1" class="text-secondary">Email address</label>
+                    <input type="email" class="form-control border-secondary" placeholder="Enter email" formControlName="email">
+                    <div *ngIf="email.touched && email.invalid">
+                        <small *ngIf='email.errors?.required' class="form-text text-danger d-flex justify-content-center">email is required</small>
+                        <small *ngIf='email.errors?.email' class="form-text text-danger d-flex justify-content-center">Incorrect email format</small>
+                    </div>
+                </div>
+                <div class="form-group pt-3 pb-2 pl-5 pr-5">
+                    <label for="exampleInputPassword1" class="text-secondary">Password</label>
+                    <input type="password" class="form-control border-secondary" placeholder="Password" formControlName="password">
+                    <div *ngIf="password.touched && password.invalid">
+                        <small *ngIf="password.errors?.required" class="form-text text-danger d-flex justify-content-center">Password Required</small>
+                        <small *ngIf="password.errors?.password" class="form-text text-danger d-flex justify-content-center">Incorrect Password Format</small>
+                    </div>
+                </div>
+                <div class="form-group pt-5 pb-2 pl-5 pr-5">
+                    <button type="button" class="btn btn-success btn-block" (click)="loginUser(loginForm.value)" [disabled]="loginForm.invalid">Login</button>
+                </div>
+                <div class="form-group pt-3 pb-5 pl-5 pr-5">
+                    <button type="reset" class="btn btn-danger btn-block">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

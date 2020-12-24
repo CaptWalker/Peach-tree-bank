@@ -1,0 +1,35 @@
+<div class="card-block">
+    <h4 class="card-title text-primary d-flex justify-content-center pt-3 \">Transactions</h4>
+    <div class="m-2 mt-5 border p-2 rounded border-info">
+        <table class="table table-sm table-borderless">
+            <thead class="border border-top-0 border-right-0 border-left-0 text-secondary">
+                <tr>
+                    <th>#</th>
+                    <th>TransactionId</th>
+                    <th>Date</th>
+                    <th>Beneficiary Account</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="transactions.length!==0">
+                <tr *ngFor="let transaction of transactions; let i = index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{transaction.transactionId}}</td>
+                    <td>{{transaction.createdDate}}</td>
+                    <td>{{transaction.beneficiaryAccount.accountNo}}</td>
+                    <td>{{transaction.amount}}</td>
+                </tr>
+            </tbody>
+            <tbody *ngIf="transactions.length===0">
+                <tr>
+                    <td colspan="5"><h5 class="text-info text-center">You havn't done any transaction till date.</h5></td>
+                </tr>
+            </tbody>
+        </table>    
+    </div>
+    <div class="card-footer bg-transparent d-flex align-item-end border-top-0 fixed-bottom mb-4">
+        <div class="h6 ml-auto p-2 border rounded border-info m-2 text-secondary">
+            TOTAL CASH BALANCE: {{cashBalance}}
+        </div>
+    </div>
+</div>

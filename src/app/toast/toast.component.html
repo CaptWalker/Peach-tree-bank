@@ -1,0 +1,11 @@
+<div style="position: absolute; right: 0; z-index: 1000000;">
+    <div *ngFor="let toast of toastService.toasts" >
+        <div class="alert alert-{{toast.className}} alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="remove(toast)">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <!-- <strong>Well done!</strong> You successfully read this important alert message. -->
+            {{toast.text}}
+        </div>    
+    </div>
+</div>

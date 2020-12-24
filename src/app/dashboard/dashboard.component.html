@@ -1,0 +1,8 @@
+<div class="d-flex">
+    <div class="card w-30 mr-1 mt-5 border-info">
+        <app-new-transaction [customer]="customer" (generateTransaction)="generateTransaction($event)"></app-new-transaction>
+    </div>
+    <div class="card w-75 ml-1 mt-5 border-info">
+        <app-transaction-table [transactions]="transactions" [cashBalance]="cashBalance"></app-transaction-table>
+    </div>
+</div>

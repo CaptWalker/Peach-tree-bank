@@ -1,0 +1,6 @@
+FROM node:11.6.0-alpine AS builder
+COPY . ./peach-tree-bank
+WORKDIR /peach-tree-bank
+
+FROM nginx:1.15.8-alpine
+COPY --from=builder /peach-tree-bank/dist/peach-tree-bank/ /usr/share/nginx/html

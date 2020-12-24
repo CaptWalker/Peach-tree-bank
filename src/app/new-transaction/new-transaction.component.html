@@ -1,0 +1,43 @@
+<div class="card-block">
+  <h4 class="card-title text-primary d-flex justify-content-center pt-3 \">New Transaction</h4>
+  <div class="form-group pt-5 pb-2 pl-5 pr-5">
+    <div class="dropdown">
+      <button class="btn btn-outline-secondary btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a *ngIf="fromAccount !== undefined">{{fromAccount.accountNo}}</a>
+        <a *ngIf="fromAccount === undefined">Select Account</a>  
+      </button>
+      <div class="dropdown-menu w-100 text-center" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" *ngFor="let account of customer.accounts"
+          (click)="setFromAccount(account)">{{account.accountNo}}</a>
+      </div>
+    </div>
+  </div>
+  <div class="form-group pt-5 pb-2 pl-5 pr-5">
+    <div class="dropdown">
+      <button class="btn btn-outline-secondary btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a *ngIf="beneficiaryAccount !== undefined">{{beneficiaryAccount.accountNo}}</a>
+        <a *ngIf="beneficiaryAccount === undefined">Select Beneficiary</a>
+      </button>
+      <div class="dropdown-menu w-100 text-center" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" *ngFor="let beneficiary of customer.beneficiaries"
+          (click)="setBeneficiaryAccount(beneficiary)">{{beneficiary.accountNo}}</a>
+      </div>
+    </div>
+  </div>
+  <form [formGroup]="paymentForm">
+  <div class="form-group pt-4 pb-2 pl-5 pr-5">
+    <label class="text-secondary">Amount</label>
+    <input type="number" min="0" class="form-control border-secondary" placeholder="1000" formControlName="amount">
+    <div *ngIf="amount.touched && amount.invalid">
+      <small *ngIf='amount.errors?.required' class="form-text text-danger d-flex justify-content-center">Please Provide Amount</small>
+      <small *ngIf='amount.errors?.amount' class="form-text text-danger d-flex justify-content-center">Amount cannot be negative or zero</small>
+    </div>
+  </div>
+  </form>
+  <div class="form-group pt-5 pb-2 pl-5 pr-5">
+    <button class="btn btn-success btn-block" (click)="pay(paymentForm.value)">Pay</button>
+  </div>
+  <div class="form-group pt-3 pb-5 pl-5 pr-5">
+    <button class="btn btn-danger btn-block">Cancel</button>
+  </div>
+</div>
